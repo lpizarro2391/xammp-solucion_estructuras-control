@@ -4,8 +4,10 @@
   const MOD_ESTUDIANTE = array('asignaturas cursadas', 'registro de notas');
   const MOD_PADRE = array('reuniones', 'registro de notas');
   $tipo_acceso = 'profesor';
-
-
+  $mont = "";
+  if(isset($_POST['submit'])){
+    $tipo_acceso = $_POST['month'];
+    }
  ?>
 
 <!DOCTYPE html>
@@ -38,6 +40,21 @@
     </div>
   </div>
   <div class="container">
+
+
+  <form method="post" action="">
+    <select name='month'>
+        <?php
+        $monts = array('profesor', 'estudiante', 'padre');
+        foreach ($monts as $value) {?>
+           <option value="<?php echo $value?>" <?php if($mont == $value ) { echo 'selected="selected"';}?>><?php echo $value; ?></option><?php }
+         ?>
+     </select>
+  <input type="submit" value="Cambiar" name='submit'></input>
+</form>
+
+
+
 
     <?php if ($tipo_acceso == CATEGORIAS[0]) {  ?>
 
